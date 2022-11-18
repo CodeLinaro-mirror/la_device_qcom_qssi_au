@@ -204,6 +204,8 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 # Enable binderized camera HAL
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 
+$(call inherit-product-if-exists, $(TOPDIR)vendor/qcom/proprietary/commonsys/ais-sys/product.mk)
+
 # Ethernet configuration file
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
