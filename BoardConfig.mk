@@ -167,4 +167,3 @@ BOARD_AVB_SYSTEM_EXT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 #################################################################################
 -include vendor/qcom/defs/board-defs/system/*.mk
 #################################################################################
-include device/qcom/sepolicy/SEPolicy.mk
