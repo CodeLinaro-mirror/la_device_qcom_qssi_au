@@ -12,7 +12,6 @@ system/framework/UxPerformance.jar \
 system/framework/QXPerformance.jar \
 system/framework/WfdCommon.jar \
 system/framework/qcom.fmradio.jar \
-system/framework/tcmiface.jar \
 system/framework/tcmclient.jar \
 system/framework/telephony-ext.jar \
 system/lib/libcurl.so \

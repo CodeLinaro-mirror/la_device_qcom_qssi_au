@@ -14,6 +14,7 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 #Enable product partition Native I/F. It is automatically set to current if
 #the shipping API level for the target is greater than 29
 PRODUCT_PRODUCT_VNDK_VERSION := current
+PRODUCT_EXTRA_VNDK_VERSIONS := 33
 
 RELAX_USES_LIBRARY_CHECK := true
 
@@ -48,7 +49,7 @@ BOARD_HAVE_QCOM_FM := false
 
 # Retain the earlier default behavior i.e. ota config (dynamic partition was disabled if not set explicitly), so set
 # SHIPPING_API_LEVEL to 28 if it was not set earlier (this is generally set earlier via build.sh per-target)
-SHIPPING_API_LEVEL := 31
+SHIPPING_API_LEVEL := 33
 
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/cne_url*.mk)
 
@@ -129,8 +130,6 @@ BOARD_FRP_PARTITION_NAME := frp
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
-
-PRODUCT_BOOT_JARS += tcmiface
 
 ifneq ($(TARGET_NO_TELEPHONY), true)
 PRODUCT_BOOT_JARS += telephony-ext
