@@ -27,6 +27,9 @@ TARGET_NO_KERNEL := true
 TARGET_KERNEL_DLKM_DISABLE := true
 
 -include $(QCPATH)/common/msmnile_au/BoardConfigVendor.mk
+# Reset these to avoid compiling some wlan vendor modules
+WPA_SUPPLICANT_VERSION := false
+BOARD_WLAN_DEVICE := false
 
 USE_OPENGL_RENDERER := true
 BOARD_USE_LEGACY_UI := true

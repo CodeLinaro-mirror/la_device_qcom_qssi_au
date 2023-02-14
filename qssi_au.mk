@@ -7,7 +7,6 @@ TARGET_BOARD_TYPE := auto
 TARGET_BOARD_SUFFIX := _au
 
 TARGET_BOARD_AUTO := true
-TARGET_BUILD_VENDOR := true
 TARGET_NO_TELEPHONY := true
 # Skip VINTF checks for kernel configs since we do not have kernel source
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
