@@ -152,7 +152,7 @@ BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext system_dlkm
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 5314772992
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
 ifeq ($(ENABLE_AB), true)
-AB_OTA_PARTITIONS ?= system system_ext vbmeta_system system_dlkm
+AB_OTA_PARTITIONS ?= system system_ext system_dlkm
 endif
 endif
 ###### Dynamic Partition Handling ####
