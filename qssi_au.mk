@@ -117,7 +117,7 @@ TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
 # RRO configuration
-#TARGET_USES_RRO := true
+TARGET_USES_RRO := true
 
 
 # default is nosdcard, S/W button enabled in resource
@@ -282,7 +282,6 @@ PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
-PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE:=true
 
