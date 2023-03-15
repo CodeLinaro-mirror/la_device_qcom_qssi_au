@@ -204,3 +204,6 @@ ro.radio.noril=true
 ro.boot.wificountrycode=us
 
 persist.logd.size=4194304
+
+#Partition source order for Product/Build properties pickup.
+ro.product.property_source_order=odm,vendor,product,system_ext,system
