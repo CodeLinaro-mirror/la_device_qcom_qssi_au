@@ -139,11 +139,6 @@ else
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
 
-# System DLKM dynamic Partition support
-BOARD_USES_SYSTEM_DLKMIMAGE := true
-TARGET_COPY_OUT_SYSTEM_DLKM := system_dlkm
-BOARD_SYSTEM_DLKMIMAGE_FILE_SYSTEM_TYPE := ext4
-
 BOARD_BUILD_SYSTEM_ROOT_IMAGE := false
 ifeq ($(ENABLE_AB), true)
 BOARD_SUPER_PARTITION_SIZE := 12884901888
@@ -151,11 +146,11 @@ else
 BOARD_SUPER_PARTITION_SIZE := 5318967296
 endif
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext system_dlkm
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 5314772992
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
 ifeq ($(ENABLE_AB), true)
-AB_OTA_PARTITIONS ?= system system_ext system_dlkm
+AB_OTA_PARTITIONS ?= system system_ext
 endif
 endif
 ###### Dynamic Partition Handling ####
