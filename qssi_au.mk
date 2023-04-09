@@ -7,7 +7,6 @@ TARGET_BOARD_TYPE := auto
 TARGET_BOARD_SUFFIX := _au
 
 TARGET_BOARD_AUTO := true
-TARGET_BUILD_VENDOR := true
 TARGET_NO_TELEPHONY := true
 # Skip VINTF checks for kernel configs since we do not have kernel source
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
@@ -31,6 +30,7 @@ PRODUCT_BUILD_CACHE_IMAGE := false
 PRODUCT_BUILD_USERDATA_IMAGE := false
 PRODUCT_BUILD_PRODUCT_IMAGE := false
 PRODUCT_BUILD_PRODUCT_SERVICES_IMAGE := false
+TARGET_USES_GAS := true
 
 # Enable debugfs restrictions
 PRODUCT_SET_DEBUGFS_RESTRICTIONS := true
@@ -72,11 +72,6 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SYSTEM_EXT_IMAGE := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_BUILD_RAMDISK_IMAGE := true
-BOARD_AVB_VBMETA_SYSTEM := system system_ext
-BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
-BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
-BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX_LOCATION := 2
 endif
 #### Dynamic Partition Handling
 
@@ -121,7 +116,7 @@ TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
 # RRO configuration
-#TARGET_USES_RRO := true
+TARGET_USES_RRO := true
 
 
 # default is nosdcard, S/W button enabled in resource
@@ -286,7 +281,6 @@ PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
-PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE:=true
 
