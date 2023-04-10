@@ -15,6 +15,9 @@ TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a9
 
+# Define ELITE_TECHPACK to enable libavenhancements
+ENABLE_AUDIO_LEGACY_TECHPACK := true
+
 BOARD_SUPPORTS_RAMDISK_EARLY_INIT := true
 
 BOARD_SECCOMP_POLICY := device/qcom/$(TARGET_BOARD_PLATFORM)/seccomp
