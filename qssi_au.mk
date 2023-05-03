@@ -133,6 +133,10 @@ PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
 endif
 
+ifeq ($(TARGET_USES_GAS),true)
+PRODUCT_PRODUCT_PROPERTIES += ro.gas.sharesensordata.enabled=1
+endif
+
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
 
 TARGET_SYSTEM_PROP += device/qcom/qssi_au/system.prop
