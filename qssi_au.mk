@@ -49,7 +49,7 @@ BOARD_HAVE_QCOM_FM := false
 
 # Retain the earlier default behavior i.e. ota config (dynamic partition was disabled if not set explicitly), so set
 # SHIPPING_API_LEVEL to 28 if it was not set earlier (this is generally set earlier via build.sh per-target)
-SHIPPING_API_LEVEL := 31
+SHIPPING_API_LEVEL := 33
 
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/cne_url*.mk)
 
@@ -131,6 +131,10 @@ PRODUCT_BOOT_JARS += tcmiface
 ifneq ($(TARGET_NO_TELEPHONY), true)
 PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
+endif
+
+ifeq ($(TARGET_USES_GAS),true)
+PRODUCT_PRODUCT_PROPERTIES += ro.gas.sharesensordata.enabled=1
 endif
 
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
