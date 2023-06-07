@@ -1,3 +1,1 @@
 libdiag_system.qti.so
-libqape.qti.so
-liblistenjni.qti.so
