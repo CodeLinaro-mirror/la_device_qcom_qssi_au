@@ -8,6 +8,9 @@ TARGET_BOARD_SUFFIX := _au
 
 TARGET_BOARD_AUTO := true
 TARGET_NO_TELEPHONY := true
+
+DEVICE_SUPPORTS_64_BIT_APPS_ONLY := true
+
 # Skip VINTF checks for kernel configs since we do not have kernel source
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
