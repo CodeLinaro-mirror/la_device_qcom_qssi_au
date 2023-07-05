@@ -95,6 +95,8 @@ TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
 
+TARGET_USES_GAS := true
+
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
