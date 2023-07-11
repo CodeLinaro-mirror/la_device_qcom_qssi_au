@@ -188,6 +188,8 @@ PRODUCT_PACKAGES += \
 DEVICE_FRAMEWORK_MANIFEST_FILE := device/qcom/qssi_au/framework_manifest.xml
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := vendor/qcom/opensource/core-utils/vendor_framework_compatibility_matrix.xml
 
+PRODUCT_PRODUCT_PROPERTIES += persist.adb.tcp.port=5555
+
 #audio related module
 PRODUCT_PACKAGES += libvolumelistener
 
