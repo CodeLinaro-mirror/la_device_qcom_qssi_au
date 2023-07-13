@@ -320,6 +320,8 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
+#Including VNDK v32 which is needed to build Android 12L vendor
+PRODUCT_EXTRA_VNDK_VERSIONS := 32
 
 ###################################################################################
 # This is the End of target.mk file.
