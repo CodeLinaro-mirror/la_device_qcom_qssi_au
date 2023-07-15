@@ -49,7 +49,7 @@ BOARD_HAVE_QCOM_FM := false
 
 # Retain the earlier default behavior i.e. ota config (dynamic partition was disabled if not set explicitly), so set
 # SHIPPING_API_LEVEL to 28 if it was not set earlier (this is generally set earlier via build.sh per-target)
-SHIPPING_API_LEVEL := 33
+SHIPPING_API_LEVEL := 34
 
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/cne_url*.mk)
 
@@ -121,7 +121,7 @@ TARGET_USES_AOSP_FOR_AUDIO := false
 TARGET_USES_QCOM_BSP := false
 
 # RRO configuration
-#TARGET_USES_RRO := true
+TARGET_USES_RRO := true
 
 
 # default is nosdcard, S/W button enabled in resource
@@ -284,7 +284,6 @@ PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
-PRODUCT_ENFORCE_RRO_TARGETS := framework-res
 
 PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE:=true
 
