@@ -136,8 +136,13 @@ ifeq ($(ENABLE_AB), true)
 AB_OTA_PARTITIONS ?= system
 endif
 else
+
 TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 BOARD_SYSTEM_EXTIMAGE_FILE_SYSTEM_TYPE := ext4
+
+BOARD_USES_PRODUCTIMAGE := true
+TARGET_COPY_OUT_PRODUCT := product
+BOARD_PRODUCTIMAGE_FILE_SYSTEM_TYPE := ext4
 
 # System DLKM dynamic Partition support
 BOARD_USES_SYSTEM_DLKMIMAGE := true
@@ -150,11 +155,11 @@ else
 BOARD_SUPER_PARTITION_SIZE := 5318967296
 endif
 BOARD_SUPER_PARTITION_GROUPS := qti_dynamic_partitions
-BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext system_dlkm
+BOARD_QTI_DYNAMIC_PARTITIONS_PARTITION_LIST := system system_ext system_dlkm product
 BOARD_QTI_DYNAMIC_PARTITIONS_SIZE := 5314772992
 BOARD_EXT4_SHARE_DUP_BLOCKS := true
 ifeq ($(ENABLE_AB), true)
-AB_OTA_PARTITIONS ?= system system_ext vbmeta_system system_dlkm
+AB_OTA_PARTITIONS ?= system system_ext vbmeta_system system_dlkm product
 endif
 endif
 ###### Dynamic Partition Handling ####
@@ -162,6 +167,7 @@ endif
 # Use sha256 for dm-verity partitions
 BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_SYSTEM_EXT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
+BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
 #################################################################################
 # This is the End of BoardConfig.mk file.
