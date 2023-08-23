@@ -4,6 +4,11 @@ $(call inherit-product, device/qcom/qssi_au/base.mk)
 # Since we want use QC specific files, we should inherit
 # device-vendor.mk first to make sure QC specific files gets installed.
 $(call inherit-product-if-exists, $(QCPATH)/common/config/device-vendor-qssi.mk)
+
+# Copy the 64-bit primary. In Android 13, core_64_bit.mk doesnt copy zygote64 by default.
+PRODUCT_COPY_FILES += \
+    system/core/rootdir/init.zygote64.rc:system/etc/init/hw/init.zygote64.rc
+
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 ifeq ($(TARGET_BOARD_AUTO), true)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
