@@ -219,6 +219,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qfp=true
 
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.adb.tcp.port=5555
+
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.device_config.runtime_native_boot.iorap_perfetto_enable=true
 
