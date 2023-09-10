@@ -8,6 +8,9 @@ TARGET_BOARD_SUFFIX := _au
 
 TARGET_BOARD_AUTO := true
 TARGET_NO_TELEPHONY := true
+
+DEVICE_SUPPORTS_64_BIT_APPS_ONLY := true
+
 # Skip VINTF checks for kernel configs since we do not have kernel source
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
@@ -70,9 +73,10 @@ PRODUCT_USE_DYNAMIC_PARTITIONS := true
 # Disable building the SUPER partition in this build. SUPER should be built
 # after QSSI has been merged with the SoC build.
 PRODUCT_BUILD_SYSTEM_EXT_IMAGE := true
+PRODUCT_BUILD_PRODUCT_IMAGE := true
 PRODUCT_BUILD_SUPER_PARTITION := false
 PRODUCT_BUILD_RAMDISK_IMAGE := true
-BOARD_AVB_VBMETA_SYSTEM := system system_ext
+BOARD_AVB_VBMETA_SYSTEM := system system_ext product
 BOARD_AVB_VBMETA_SYSTEM_KEY_PATH := external/avb/test/data/testkey_rsa2048.pem
 BOARD_AVB_VBMETA_SYSTEM_ALGORITHM := SHA256_RSA2048
 BOARD_AVB_VBMETA_SYSTEM_ROLLBACK_INDEX := $(PLATFORM_SECURITY_PATCH_TIMESTAMP)
