@@ -1,3 +1,1 @@
-libupdateprof.qti.so
-libthermalclient.qti.so
 libdiag_system.qti.so
