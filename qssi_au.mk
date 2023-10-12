@@ -133,10 +133,6 @@ PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
 endif
 
-ifeq ($(TARGET_USES_GAS),true)
-PRODUCT_PRODUCT_PROPERTIES += ro.gas.sharesensordata.enabled=1
-endif
-
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
 
 TARGET_SYSTEM_PROP += device/qcom/qssi_au/system.prop
@@ -203,8 +199,6 @@ PRODUCT_PACKAGES += camera.device@1.0-impl
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 # Enable binderized camera HAL
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
-
-$(call inherit-product-if-exists, $(TOPDIR)vendor/qcom/proprietary/commonsys/ais-sys/product.mk)
 
 # Ethernet configuration file
 PRODUCT_COPY_FILES += \
