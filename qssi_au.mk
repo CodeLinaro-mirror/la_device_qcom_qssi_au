@@ -323,6 +323,8 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
+# Enable support for APEX updates
+$(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
 ###################################################################################
 # This is the End of target.mk file.
