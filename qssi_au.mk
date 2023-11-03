@@ -216,6 +216,10 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
 
+#To Maintain Vendors which has both 32-bit and 64-bit Enabled
+PRODUCT_COPY_FILES += \
+    system/core/rootdir/init.zygote64_32.rc:system/etc/init/hw/init.zygote64_32.rc
+
 # Context hub HAL
 PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl.generic \
