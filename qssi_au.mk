@@ -20,7 +20,7 @@ PRODUCT_PRODUCT_VNDK_VERSION := current
 #TODO(amutyala) to revert once QSSI 15 component created
 #This change requires to build super image (QSSI15 + V14)
 ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
-PRODUCT_EXTRA_VNDK_VERSIONS := 33
+PRODUCT_EXTRA_VNDK_VERSIONS := 32 33
 else
 PRODUCT_EXTRA_VNDK_VERSIONS := 33 34
 endif
