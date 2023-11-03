@@ -17,7 +17,7 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 #Enable product partition Native I/F. It is automatically set to current if
 #the shipping API level for the target is greater than 29
 PRODUCT_PRODUCT_VNDK_VERSION := current
-PRODUCT_EXTRA_VNDK_VERSIONS := 33
+PRODUCT_EXTRA_VNDK_VERSIONS := 32 33
 
 RELAX_USES_LIBRARY_CHECK := true
 
