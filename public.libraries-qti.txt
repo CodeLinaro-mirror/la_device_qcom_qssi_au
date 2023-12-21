@@ -1,6 +1,0 @@
-<<<<<<< HEAD   (08daee Merge "qssi: Remove reference to legacy post-boot script" in)
-libvraudio_client.qti.so
-libbinauralrenderer_wrapper.qti.so
-libhoaeffects.qti.so
-=======
->>>>>>> CHANGE (5f7de4 qssi_au : Fix for CtsUsesNativeLibraryTest failure)
