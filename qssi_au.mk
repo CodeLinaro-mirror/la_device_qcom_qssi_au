@@ -289,8 +289,6 @@ ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_au/overlay
 endif
 
-PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
-
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
 
