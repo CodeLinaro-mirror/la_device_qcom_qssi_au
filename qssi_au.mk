@@ -133,10 +133,6 @@ PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
 endif
 
-ifeq ($(TARGET_USES_GAS),true)
-PRODUCT_PRODUCT_PROPERTIES += ro.gas.sharesensordata.enabled=1
-endif
-
 TARGET_ENABLE_QC_AV_ENHANCEMENTS := false
 
 TARGET_SYSTEM_PROP += device/qcom/qssi_au/system.prop
@@ -204,8 +200,6 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-impl
 # Enable binderized camera HAL
 PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 
-$(call inherit-product-if-exists, $(TOPDIR)vendor/qcom/proprietary/commonsys/ais-sys/product.mk)
-
 # Ethernet configuration file
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
@@ -218,6 +212,9 @@ PRODUCT_PACKAGES += \
 # system prop for enabling QFS (QTI Fingerprint Solution)
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.vendor.qfp=true
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    persist.adb.tcp.port=5555
 
 PRODUCT_SYSTEM_PROPERTIES += \
     persist.device_config.runtime_native_boot.iorap_perfetto_enable=true
@@ -281,6 +278,9 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_au/overlay
+else
+#Add Runtime Resource Overlays to build
+$(call inherit-product-if-exists, device/qcom/qssi_au/overlay/resource-overlay/overlay.mk)
 endif
 
 PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
@@ -320,6 +320,8 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
+#Including VNDK v32 which is needed to build Android 12L vendor
+PRODUCT_EXTRA_VNDK_VERSIONS := 32
 
 ###################################################################################
 # This is the End of target.mk file.
