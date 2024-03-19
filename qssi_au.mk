@@ -278,6 +278,9 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 
 ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_au/overlay
+else
+#Add Runtime Resource Overlays to build
+$(call inherit-product-if-exists, device/qcom/qssi_au/overlay/resource-overlay/overlay.mk)
 endif
 
 PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
@@ -317,6 +320,8 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
+#Including VNDK v32 which is needed to build Android 12L vendor
+PRODUCT_EXTRA_VNDK_VERSIONS := 32
 
 ###################################################################################
 # This is the End of target.mk file.

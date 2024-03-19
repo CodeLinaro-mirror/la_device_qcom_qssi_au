@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2024 Qualcomm Innovation Center, Inc.
+All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause-Clear.
+-->
+<resources>
+    <!-- Enable doze mode -->
+    <bool name="doze_display_state_supported">true</bool>
+</resources>

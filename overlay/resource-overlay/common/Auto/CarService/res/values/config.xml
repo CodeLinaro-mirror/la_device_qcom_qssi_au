@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) 2024 Qualcomm Innovation Center, Inc.
+All rights reserved.
+SPDX-License-Identifier: BSD-3-Clause-Clear.
+-->
+
+<!--
+  Overlay resources to configure car service based on each OEM's preference.
+  See also packages/services/Car/service/res/values/config.xml
+-->
+<resources>
+    <!--  Configuration to enable usage of dynamic audio routing. If this is set to false,
+          dynamic audio routing is disabled and audio works in legacy mode. It may be useful
+          during initial development where audio hal does not support bus based addressing yet. -->
+    <bool name="audioUseDynamicRouting">true</bool>
+
+    <!--  Configuration to enable muting of individual volume groups. If this is set to
+          false, muting of individual volume groups is disabled, instead muting will toggle master
+          mute. If this is set to true, car volume group muting is enabled and each individual
+          volume group can be muted separately. -->
+    <bool name="audioUseCarVolumeGroupMuting">true</bool>
+</resources>

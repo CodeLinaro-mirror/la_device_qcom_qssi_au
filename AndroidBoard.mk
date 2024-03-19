@@ -84,3 +84,8 @@ ifneq (, $(wildcard $(SOURCE_ROOT)/prebuilts/build-tools/linux-x86/bin/make))
 endif
 
 -include vendor/qcom/configs/scripts/Android.mk
+
+ifeq ($(TARGET_USES_RRO) ,true)
+#Add Runtime Resource Overlays to build
+-include device/qcom/qssi_au/overlay/resource-overlay/Android.mk
+endif
