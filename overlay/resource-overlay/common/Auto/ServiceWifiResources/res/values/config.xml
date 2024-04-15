@@ -85,4 +85,9 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
 
     <!-- boolean indicating whether or not to auto-upgrade band setting configuration to dual bands during cloud configuration restore when device supported -->
     <bool translatable="false" name ="config_wifiSoftapAutoUpgradeToBridgedConfigWhenSupported">false</bool>
+
+    <!-- Indicates that the framework should auto append lower bands to band configuration for
+         avoiding coexistence handling. For example: 5g only band will change to 2.4g|5g and
+         6g band will change to 2.4|5g|6g band -->
+    <bool translatable="false" name="config_wifiSoftapAutoAppendLowerBandsToBandConfigurationEnabled">false</bool>
 </resources>
