@@ -17,8 +17,13 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 #Enable product partition Native I/F. It is automatically set to current if
 #the shipping API level for the target is greater than 29
 PRODUCT_PRODUCT_VNDK_VERSION := current
-PRODUCT_EXTRA_VNDK_VERSIONS := 33
-
+#TODO(amutyala) to revert once QSSI 15 component created
+#This change requires to build super image (QSSI15 + V14)
+ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
+PRODUCT_EXTRA_VNDK_VERSIONS := 32 33
+else
+PRODUCT_EXTRA_VNDK_VERSIONS := 33 34
+endif
 RELAX_USES_LIBRARY_CHECK := true
 
 #Enable product partition Java I/F. It is automatically set to true if
@@ -93,9 +98,10 @@ VENDOR_QTI_DEVICE := qssi_au
 TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
-
+#TODO(amutyala) to revert this once QSSI 15 component created
+ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
 TARGET_USES_GAS := true
-
+endif
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
@@ -210,6 +216,10 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
 
+#To Maintain Vendors which has both 32-bit and 64-bit Enabled
+PRODUCT_COPY_FILES += \
+    system/core/rootdir/init.zygote64_32.rc:system/etc/init/hw/init.zygote64_32.rc
+
 # Context hub HAL
 PRODUCT_PACKAGES += \
     android.hardware.contexthub@1.0-impl.generic \
@@ -272,7 +282,7 @@ endif
 
 # copy system_ext specific whitelisted libraries to system_ext/etc
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi/public.libraries.system_ext-qti.txt:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/public.libraries-qti.txt
+    device/qcom/qssi_au/public.libraries.system_ext-qti.txt:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/public.libraries-qti.txt
 
 #Enable full treble flag
 PRODUCT_FULL_TREBLE_OVERRIDE := true
@@ -282,8 +292,6 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_au/overlay
 endif
-
-PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
@@ -313,7 +321,7 @@ endif
 
 # Include mainline components and QSSI whitelist
 ifeq (true,$(call math_gt_or_eq,$(SHIPPING_API_LEVEL),29))
-  $(call inherit-product, device/qcom/qssi/qssi_whitelist.mk)
+  $(call inherit-product, device/qcom/qssi_au/qssi_au_whitelist.mk)
   PRODUCT_ARTIFACT_PATH_REQUIREMENT_IGNORE_PATHS := /system/system_ext/
   PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := true
 endif
