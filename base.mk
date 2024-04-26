@@ -647,10 +647,6 @@ WPA += hs20-osu-client
 #ZLIB
 ZLIB := gzip
 ZLIB += libunz
-#TODO(amutyala) to revert this once QSSI 15 component created
-ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
-ZLIB_HOST := minigzip
-endif
 #Charger
 CHARGER := charger
 CHARGER += charger_res_images
@@ -876,11 +872,6 @@ endif
 # OEM Unlock reporting
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
-
-
-# VNDK-SP:
-PRODUCT_PACKAGES += \
-    vndk-sp \
 
 TARGET_FS_CONFIG_GEN := device/qcom/qssi_au/config.fs
 
