@@ -107,8 +107,12 @@ endif
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
+ENABLE_CARTELEMETRY_SERVICE := true
 $(call inherit-product, device/qcom/qssi_au/common64.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
+
+PRODUCT_PACKAGES += android.automotive.telemetryd@1.0
+PRODUCT_PACKAGES += ScriptExecutor
 
 #Inherit all except heap growth limit from phone-xhdpi-2048-dalvik-heap.mk
 PRODUCT_PROPERTY_OVERRIDES  += \
