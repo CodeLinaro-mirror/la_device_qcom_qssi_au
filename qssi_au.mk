@@ -82,6 +82,10 @@ PRODUCT_BUILD_RAMDISK_IMAGE := true
 endif
 #### Dynamic Partition Handling
 
+PRODUCT_PRODUCT_PROPERTIES += \
+    remote_provisioning.enable_rkpd=true \
+    remote_provisioning.hostname=remoteprovisioning.googleapis.com \
+
 PRODUCT_SOONG_NAMESPACES += \
     frameworks/base/boot \
     cts/tests/signature/api-check \
