@@ -269,6 +269,10 @@ PRODUCT_PACKAGES += candump \
                     slcand \
                     slcanpty
 
+# Ethernet tools
+PRODUCT_PACKAGES_DEBUG += ethtool \
+                          tcpdump
+
 # HS-I2S test app
 PRODUCT_PACKAGES += hsi2s_test
 
