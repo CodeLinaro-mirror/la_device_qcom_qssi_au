@@ -20,4 +20,7 @@ SPDX-License-Identifier: BSD-3-Clause-Clear.
           mute. If this is set to true, car volume group muting is enabled and each individual
           volume group can be muted separately. -->
     <bool name="audioUseCarVolumeGroupMuting">true</bool>
+
+    <!-- A configuration flag to adjust Wifi for suspend. -->
+    <bool name="config_wifiAdjustmentForSuspend">true</bool>
 </resources>
