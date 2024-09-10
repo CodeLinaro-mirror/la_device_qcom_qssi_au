@@ -140,6 +140,8 @@ BOARD_FRP_PARTITION_NAME := frp
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
 
+PRODUCT_PACKAGES_DEBUG += avbctl
+
 ifneq ($(TARGET_NO_TELEPHONY), true)
 PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
