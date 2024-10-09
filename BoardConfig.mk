@@ -2,23 +2,37 @@
 #
 # Product-specific compile-time definitions.
 #
-
 TARGET_ARCH := arm64
 TARGET_ARCH_VARIANT := armv8-a-branchprot
 TARGET_CPU_ABI := arm64-v8a
 TARGET_CPU_ABI2 :=
 TARGET_CPU_VARIANT := generic
 
+ifneq ($(TARGET_AUTO_RBVM), true)
 TARGET_2ND_ARCH := arm
 TARGET_2ND_ARCH_VARIANT := armv7-a-neon
 TARGET_2ND_CPU_ABI := armeabi-v7a
 TARGET_2ND_CPU_ABI2 := armeabi
 TARGET_2ND_CPU_VARIANT := cortex-a9
+endif
 
 BOARD_SUPPORTS_RAMDISK_EARLY_INIT := true
 
 BOARD_SECCOMP_POLICY := device/qcom/$(TARGET_BOARD_PLATFORM)/seccomp
 
+### SDV BEGIN
+ifeq ($(TARGET_AUTO_RBVM), true)
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/system_ext/private
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/samples/system_ext/private
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/system_ext/private
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/samples/system_ext/private
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/system_ext/public
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/system_ext/public
+PRODUCT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/product/private
+BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/vendor/
+BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/vendor
+endif
+### SDV END
 #BOARD_SYSTEMSDK_VERSIONS:= $(SHIPPING_API_LEVEL)
 
 TARGET_NO_BOOTLOADER := true

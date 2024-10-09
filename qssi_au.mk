@@ -1,3 +1,11 @@
+# For RBVM enabled targets, include SDV components
+# SDV components for system, system_ext and product
+# will be built in QSSI
+ifeq ($(TARGET_AUTO_RBVM), true)
+SDV_SOMEIP_BROKER_CONFIG := broker_config.json
+-include device/google/sdv/sdv_core_base/sdv_core_base.mk
+endif
+
 #For QSSI, we build only the system image. Here we explicitly set the images
 #we build so there is no confusion.
 
@@ -180,7 +188,10 @@ PRODUCT_PACKAGES += fs_config_files
 
 ifeq ($(ENABLE_AB), true)
 #A/B related packages
-PRODUCT_PACKAGES += update_engine \
+    ifneq ($(TARGET_AUTO_RBVM), true)
+        PRODUCT_PACKAGES += update_engine 
+    endif
+PRODUCT_PACKAGES += \
     update_engine_client \
     update_verifier \
     bootctrl.msmnile \
@@ -331,6 +342,10 @@ ifeq (true,$(call math_gt_or_eq,$(SHIPPING_API_LEVEL),29))
   $(call inherit-product, device/qcom/qssi_au/qssi_au_whitelist.mk)
   PRODUCT_ARTIFACT_PATH_REQUIREMENT_IGNORE_PATHS := /system/system_ext/
   PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := true
+endif
+
+ifeq ($(TARGET_AUTO_RBVM), true)
+PRODUCT_ENFORCE_ARTIFACT_PATH_REQUIREMENTS := false
 endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
