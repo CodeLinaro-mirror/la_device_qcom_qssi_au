@@ -27,7 +27,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 <manifest version="1.0" type="framework">
     <!-- atfwd -->
-    <hal format="hidl">
+    <hal format="hidl" max-level="6">
         <name>vendor.qti.hardware.radio.atcmdfwd</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -36,19 +36,8 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             <instance>AtCmdFwdService</instance>
         </interface>
     </hal>
-    <!--Sigma hal-->
-    <hal format="hidl">
-        <name>vendor.qti.hardware.sigma_miracast</name>
-        <transport>hwbinder</transport>
-        <version>1.0</version>
-        <interface>
-            <name>Isigma_miracast</name>
-            <instance>sigmahal</instance>
-            <instance>sigmahal64</instance>
-        </interface>
-    </hal>
     <!-- System Helper HAL Service -->
-    <hal format="hidl">
+    <hal format="hidl" max-level="8">
         <name>vendor.qti.hardware.systemhelper</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -74,7 +63,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         </interface>
     </hal>
     <!--QDMA hal-->
-    <hal format="hidl">
+    <hal format="hidl" max-level="8">
         <name>vendor.qti.hardware.qccsyshal</name>
         <transport>hwbinder</transport>
         <version>1.1</version>
