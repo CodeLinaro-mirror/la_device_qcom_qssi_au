@@ -350,6 +350,9 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
+PRODUCT_PACKAGES += create_vlan_vm_1.sh \
+                    create_vlan_vm_2.sh
+
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
