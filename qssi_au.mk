@@ -140,6 +140,8 @@ BOARD_FRP_PARTITION_NAME := frp
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
 
+PRODUCT_PACKAGES_DEBUG += avbctl
+
 ifneq ($(TARGET_NO_TELEPHONY), true)
 PRODUCT_BOOT_JARS += telephony-ext
 PRODUCT_PACKAGES += telephony-ext
@@ -268,6 +270,10 @@ PRODUCT_PACKAGES += candump \
                     slcan_attach \
                     slcand \
                     slcanpty
+
+# Ethernet tools
+PRODUCT_PACKAGES_DEBUG += ethtool \
+                          tcpdump
 
 # HS-I2S test app
 PRODUCT_PACKAGES += hsi2s_test
