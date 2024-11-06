@@ -17,13 +17,7 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 #Enable product partition Native I/F. It is automatically set to current if
 #the shipping API level for the target is greater than 29
 PRODUCT_PRODUCT_VNDK_VERSION := current
-#TODO(amutyala) to revert once QSSI 15 component created
-#This change requires to build super image (QSSI15 + V14)
-ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
-PRODUCT_EXTRA_VNDK_VERSIONS := 33
-else
 PRODUCT_EXTRA_VNDK_VERSIONS := 33 34
-endif
 RELAX_USES_LIBRARY_CHECK := true
 
 #Enable product partition Java I/F. It is automatically set to true if
