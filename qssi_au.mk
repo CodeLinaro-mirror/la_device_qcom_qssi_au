@@ -3,6 +3,7 @@
 # will be built in QSSI
 ifeq ($(TARGET_AUTO_RBVM), true)
 SDV_SOMEIP_BROKER_CONFIG := broker_config.json
+SDV_OPEN_DICE_PROVIDER_PACKAGES := init_open_dice
 -include device/google/sdv/sdv_core_base/sdv_core_base.mk
 endif
 
@@ -28,7 +29,7 @@ PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 PRODUCT_PRODUCT_VNDK_VERSION := current
 #TODO(amutyala) to revert once QSSI 15 component created
 #This change requires to build super image (QSSI15 + V14)
-ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
+ifeq (,$(filter VanillaIceCream V 35 W Baklava 36, $(PLATFORM_VNDK_VERSION)))
 PRODUCT_EXTRA_VNDK_VERSIONS := 33
 else
 PRODUCT_EXTRA_VNDK_VERSIONS := 33 34
@@ -110,7 +111,7 @@ TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
 #TODO(amutyala) to revert this once QSSI 15 component created
-ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
+ifeq (,$(filter VanillaIceCream V 35 W Baklava 36, $(PLATFORM_VNDK_VERSION)))
 TARGET_USES_GAS := true
 endif
 ENABLE_AB ?= true
