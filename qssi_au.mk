@@ -1,11 +1,26 @@
-# For RBVM enabled targets, include SDV components
+# For RBVM enabled targets, include SDV components.
 # SDV components for system, system_ext and product
 # will be built in QSSI
 ifeq ($(TARGET_AUTO_RBVM), true)
 SDV_SOMEIP_BROKER_CONFIG := broker_config.json
-SDV_OPEN_DICE_PROVIDER_PACKAGES := init_open_dice
+SDV_OPEN_DICE_PROVIDER_PACKAGES := \
+    init_open_dice_from_file \
+    sample_dice_handover_file
+
 -include device/google/sdv/sdv_core_base/sdv_core_base.mk
-endif
+
+PRODUCT_PACKAGES += \
+    dice_handover_instance1 \
+    dice_handover_instance2 \
+    dice_handover_instance3 \
+
+PRODUCT_COPY_FILES += device/google/sdv/sdv_cf/init_open_dice_from_file.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init_open_dice_from_file.rc
+
+PRODUCT_PACKAGES += \
+    android.sdv.hardware.security.keymint-service.nonsecure \
+    vvmconfig.example \
+
+endif #TARGET_AUTO_RBVM
 
 #For QSSI, we build only the system image. Here we explicitly set the images
 #we build so there is no confusion.
@@ -149,9 +164,12 @@ BOARD_FRP_PARTITION_NAME := frp
 
 # TODO(b/330696629) remove this once device can drop HIDL.
 # This adds hwservicemanager and the allocator service to the device.
+ifneq ($(TARGET_AUTO_RBVM), true)
 PRODUCT_PACKAGES += \
     hwservicemanager \
-    android.hidl.allocator@1.0-service
+endif
+PRODUCT_PACKAGES += \
+    android.hidl.allocator@1.0-service \
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
