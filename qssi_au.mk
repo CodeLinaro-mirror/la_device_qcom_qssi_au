@@ -167,6 +167,7 @@ BOARD_FRP_PARTITION_NAME := frp
 ifneq ($(TARGET_AUTO_RBVM), true)
 PRODUCT_PACKAGES += \
     hwservicemanager \
+
 endif
 PRODUCT_PACKAGES += \
     android.hidl.allocator@1.0-service \
