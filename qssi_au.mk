@@ -3,6 +3,8 @@
 # will be built in QSSI
 ifeq ($(TARGET_AUTO_RBVM), true)
 SDV_SOMEIP_BROKER_CONFIG := broker_config.json
+PRODUCT_SYSTEM_PROPERTIES += ro.sdv.someip.broker_config=/system/etc/someip/broker_config.json
+
 SDV_OPEN_DICE_PROVIDER_PACKAGES := \
     init_open_dice_from_file \
     sample_dice_handover_file
