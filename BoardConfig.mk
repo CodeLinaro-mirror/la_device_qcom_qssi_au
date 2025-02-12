@@ -33,6 +33,7 @@ SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_cf/sepolicy/system_ext
 PRODUCT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/product/private
 BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/vendor/
 BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/vendor
+$(call soong_config_set,sdv_authz,acl_provider_type,sdv_acl_provider)
 endif
 ### SDV END
 #BOARD_SYSTEMSDK_VERSIONS:= $(SHIPPING_API_LEVEL)

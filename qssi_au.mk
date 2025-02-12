@@ -10,6 +10,7 @@ SDV_OPEN_DICE_PROVIDER_PACKAGES := \
     sample_dice_handover_file
 
 -include device/google/sdv/sdv_core_base/sdv_core_base.mk
+-include device/google/sdv/sdv_base/sdv_sample_ethernet_setup.mk
 
 PRODUCT_PACKAGES += \
     dice_handover_instance1 \
