@@ -16,6 +16,8 @@ PRODUCT_PACKAGES += \
     dice_handover_instance1 \
     dice_handover_instance2 \
     dice_handover_instance3 \
+    com.sdv.someip.sample \
+    com.sdv.someip \
 
 PRODUCT_COPY_FILES += device/google/sdv/sdv_cf/init_open_dice_from_file.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init_open_dice_from_file.rc
 
