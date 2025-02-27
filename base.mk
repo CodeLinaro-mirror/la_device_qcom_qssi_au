@@ -912,25 +912,17 @@ PRODUCT_PACKAGES += libvndfwk_detect_jni.qti_system
 PRODUCT_PACKAGES += libvndfwk_detect_jni.qti_vendor
 
 #soong namespace for qssi vs vendor differentiation
-SOONG_CONFIG_NAMESPACES += qssi_vs_vendor
-SOONG_CONFIG_qssi_vs_vendor += qssi_or_vendor
-SOONG_CONFIG_qssi_vs_vendor_qssi_or_vendor := qssi
+$(call soong_config_set,qssi_vs_vendor,qssi_or_vendor,qssi)
 
-SOONG_CONFIG_NAMESPACES += aosp_vs_qva
-SOONG_CONFIG_aosp_vs_qva += aosp_or_qva
-ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),true)
-SOONG_CONFIG_aosp_vs_qva_aosp_or_qva := qva
-else
-SOONG_CONFIG_aosp_vs_qva_aosp_or_qva := aosp
-endif
+# soong namespace for aosp vs qva differentiation
+$(call soong_config_set,aosp_vs_qva,aosp_or_qva,$(if $(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),qva,aosp))
 
-SOONG_CONFIG_NAMESPACES += bredr_vs_btadva
-SOONG_CONFIG_bredr_vs_btadva += bredr_or_btadva
-
-ifneq "$(wildcard vendor/qcom/proprietary/commonsys/bt/bt_adv_audio)" ""
+# soong namespace for bredr vs btadva differentiation
+ifneq ($(wildcard vendor/qcom/proprietary/commonsys/bt/bt_adv_audio),)
     $(warning bt_adv_audio dir is present)
-    SOONG_CONFIG_bredr_vs_btadva_bredr_or_btadva := btadva
+    $(call soong_config_set,bredr_vs_btadva,bredr_or_btadva,btadva)
 else
     $(warning bt_adv_audio dir is not present)
-    SOONG_CONFIG_bredr_vs_btadva_bredr_or_btadva := bredr
+    $(call soong_config_set,bredr_vs_btadva,bredr_or_btadva,bredr)
+
 endif #ifneq "$(wildcard vendor/qcom/proprietary/commonsys/bt/bt_adv_audio)" ""
