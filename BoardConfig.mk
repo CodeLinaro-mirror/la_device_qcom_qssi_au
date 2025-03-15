@@ -31,8 +31,8 @@ SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/syst
 #DICE EMULATION
 SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_cf/sepolicy/system_ext/private/
 PRODUCT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/product/private
-BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/vendor/
 BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/vendor
+BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/vendor/
 $(call soong_config_set,sdv_authz,acl_provider_type,sdv_acl_provider)
 endif
 ### SDV END
