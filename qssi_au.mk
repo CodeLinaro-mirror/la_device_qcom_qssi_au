@@ -98,6 +98,11 @@ TARGET_USES_NEW_ION := true
 ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
 TARGET_USES_GAS := true
 endif
+
+ifeq ($(TARGET_USES_GAS),true)
+   PRODUCT_SYSTEM_PROPERTIES += ro.android.car.restrictbytos=true
+endif
+
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
