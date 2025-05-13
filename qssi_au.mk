@@ -98,6 +98,11 @@ TARGET_USES_NEW_ION := true
 ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
 TARGET_USES_GAS := true
 endif
+
+ifeq ($(TARGET_USES_GAS),true)
+   PRODUCT_SYSTEM_PROPERTIES += ro.android.car.restrictbytos=true
+endif
+
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
@@ -267,6 +272,9 @@ PRODUCT_PACKAGES += candump \
 
 # HS-I2S test app
 PRODUCT_PACKAGES += hsi2s_test
+
+# enables the rro package for passenger(secondary) user.
+ENABLE_PASSENGER_SYSTEMUI_RRO := true
 
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
