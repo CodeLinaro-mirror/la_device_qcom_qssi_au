@@ -41,6 +41,10 @@ TARGET_USES_STAGING_FEATURES := true
 
 DEVICE_SUPPORTS_64_BIT_APPS_ONLY := true
 
+#Add soong variable for auto board targets
+$(call add_soong_config_namespace,qti)
+$(call soong_config_set,qti,qti_target_board_auto,true)
+
 # Skip VINTF checks for kernel configs since we do not have kernel source
 PRODUCT_OTA_ENFORCE_VINTF_KERNEL_REQUIREMENTS := false
 
