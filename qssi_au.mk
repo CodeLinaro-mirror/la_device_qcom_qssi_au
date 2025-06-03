@@ -299,7 +299,6 @@ ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_au/overlay
 endif
 
-PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
@@ -338,6 +337,10 @@ PRODUCT_PACKAGES += vendor.qti.qesdsys
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Enable allowlist for some aosp packages that should not be scanned in a "stopped" state
+# # Some CTS test case failed after enabling feature config_stopSystemPackagesByDefault
+PRODUCT_PACKAGES += initial-package-stopped-states-aosp.xml
 
 ###################################################################################
 # This is the End of target.mk file.
