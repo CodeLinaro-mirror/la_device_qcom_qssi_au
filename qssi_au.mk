@@ -103,8 +103,10 @@ ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
 TARGET_USES_GAS := true
 endif
 
+ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)
 ifeq ($(TARGET_USES_GAS),true)
    PRODUCT_SYSTEM_PROPERTIES += ro.android.car.restrictbytos=true
+endif
 endif
 
 ENABLE_AB ?= true
