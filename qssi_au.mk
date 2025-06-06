@@ -19,7 +19,7 @@ PRODUCT_PACKAGES += \
     com.sdv.someip.sample \
     com.sdv.someip \
 
-PRODUCT_COPY_FILES += device/google/sdv/sdv_cf/init_open_dice_from_file.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init_open_dice_from_file.rc
+PRODUCT_COPY_FILES += device/google/sdv/sdv_base/init_open_dice_service.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init_open_dice_service.rc
 
 PRODUCT_PACKAGES += \
     android.sdv.hardware.security.keymint-service.nonsecure \
