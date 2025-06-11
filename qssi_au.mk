@@ -5,9 +5,14 @@ ifeq ($(TARGET_AUTO_RBVM), true)
 SDV_SOMEIP_BROKER_CONFIG := broker_config.json
 PRODUCT_SYSTEM_PROPERTIES += ro.sdv.someip.broker_config=/system/etc/someip/broker_config.json
 
+SDV_SOMEIP_AGENT_MODULES := \
+            qc_sdv_someip_stack_agent \
+
 SDV_OPEN_DICE_PROVIDER_PACKAGES := \
     init_open_dice_from_file \
     sample_dice_handover_file
+
+BOARD_ROOT_EXTRA_FOLDERS += vvmtruststore
 
 -include device/google/sdv/sdv_core_base/sdv_core_base.mk
 -include device/google/sdv/sdv_base/sdv_sample_ethernet_setup.mk
@@ -18,8 +23,12 @@ PRODUCT_PACKAGES += \
     dice_handover_instance3 \
     com.sdv.someip.sample \
     com.sdv.someip \
+    sdv_provisioning_tool \
+    sdv_dice_root_key_extraction_tool
 
-PRODUCT_COPY_FILES += device/google/sdv/sdv_cf/init_open_dice_from_file.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init_open_dice_from_file.rc
+PRODUCT_COPY_FILES += device/google/sdv/sdv_base/init_open_dice_service.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init_open_dice_service.rc
+
+PRODUCT_COPY_FILES += device/google/sdv/sdv_cf/vvmtruststore.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/vvmtruststore.rc
 
 PRODUCT_PACKAGES += \
     android.sdv.hardware.security.keymint-service.nonsecure \
