@@ -103,8 +103,10 @@ ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
 TARGET_USES_GAS := true
 endif
 
+ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)
 ifeq ($(TARGET_USES_GAS),true)
    PRODUCT_SYSTEM_PROPERTIES += ro.android.car.restrictbytos=true
+endif
 endif
 
 ENABLE_AB ?= true
@@ -279,6 +281,9 @@ PRODUCT_PACKAGES += hsi2s_test
 
 # enables the rro package for passenger(secondary) user.
 ENABLE_PASSENGER_SYSTEMUI_RRO := true
+
+PRODUCT_PACKAGES += MultiDisplaySecondaryHomeTestLauncher \
+                    MultiDisplayTest
 
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
