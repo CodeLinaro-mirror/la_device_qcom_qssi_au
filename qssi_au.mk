@@ -279,12 +279,6 @@ PRODUCT_PACKAGES += candump \
 # HS-I2S test app
 PRODUCT_PACKAGES += hsi2s_test
 
-# enables the rro package for passenger(secondary) user.
-ENABLE_PASSENGER_SYSTEMUI_RRO := true
-
-PRODUCT_PACKAGES += MultiDisplaySecondaryHomeTestLauncher \
-                    MultiDisplayTest
-
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
 KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
