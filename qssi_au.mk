@@ -94,10 +94,15 @@ VENDOR_QTI_DEVICE := qssi_au
 TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
-#TODO(amutyala) to revert this once QSSI 15 component created
-ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
+
 TARGET_USES_GAS := true
+
+ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)
+ifeq ($(TARGET_USES_GAS),true)
+   PRODUCT_SYSTEM_PROPERTIES += ro.android.car.restrictbytos=true
 endif
+endif
+
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
