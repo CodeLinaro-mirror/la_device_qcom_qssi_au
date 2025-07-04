@@ -282,17 +282,13 @@ PRODUCT_PACKAGES_DEBUG += ethtool \
 # HS-I2S test app
 PRODUCT_PACKAGES += hsi2s_test
 
-# enables the rro package for passenger(secondary) user.
-ENABLE_PASSENGER_SYSTEMUI_RRO := true
-
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
 KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
 
 ifneq ($(strip $(TARGET_BUILD_VARIANT)),user)
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi_au/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_PRODUCT)/etc/init.qcom.testscripts.sh \
-    device/qcom/qssi_au/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/init.qcom.testscripts.sh
+    device/qcom/qssi_au/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_PRODUCT)/etc/init.qcom.testscripts.sh
 endif
 
 # copy system_ext specific whitelisted libraries to system_ext/etc
@@ -347,6 +343,8 @@ PRODUCT_PACKAGES += network_config_default
 
 PRODUCT_COPY_FILES += \
     vendor/qcom/proprietary/commonsys/cne/automs_vlan/network_config_default.sh:$(TARGET_COPY_OUT_SYSTEM_EXT)/bin/network_config_default.sh
+
+PRODUCT_PACKAGES += early_eth_hgy.sh
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
