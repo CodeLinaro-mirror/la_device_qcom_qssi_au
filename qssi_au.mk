@@ -222,7 +222,7 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 
 # Ethernet configuration file
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
+    frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/android.hardware.ethernet.xml
 
 #To Maintain Vendors which has both 32-bit and 64-bit Enabled
 PRODUCT_COPY_FILES += \
