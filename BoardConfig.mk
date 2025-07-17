@@ -21,19 +21,36 @@ BOARD_SUPPORTS_RAMDISK_EARLY_INIT := true
 BOARD_SECCOMP_POLICY := device/qcom/$(TARGET_BOARD_PLATFORM)/seccomp
 
 ### SDV BEGIN
+# SDV OemUpdater block device properties.
+BOARD_BOOTCONFIG += \
+    androidboot.sdv.oem_slot_a_device=/dev/block/by-name/custom \
+    androidboot.sdv.oem_slot_b_device=/dev/block/by-name/custom_1
+
+# Orch->LM binder max parallel calls property
+BOARD_BOOTCONFIG += \
+    androidboot.sdv.max_bundles_management_threads=12
+
 ifeq ($(TARGET_AUTO_RBVM), true)
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/system_ext/private
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/system_ext/private
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/system_ext/public
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/system_ext/public
-PRODUCT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/samples/product/private
+# The vvmtruststore partition is owned by the framework i.e. system(_ext).
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_base/sepolicy/vvmtruststore/private \
+                                    device/google/sdv/sdv_cf/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_cf/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_core_base/sepolicy/system_ext/private
+
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/system_ext/public \
+                                   device/google/sdv/sdv_core_base/sepolicy/system_ext/public
+
+PRODUCT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/product/public
+
 #DICE EMULATION
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_cf/sepolicy/system_ext/private/
 PRODUCT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/product/private \
                                  device/google/sdv/sdv_base/sepolicy/samples/product/private \
-                                 device/google/sdv/sdv_core_base/sepolicy/samples/product/private
+                                 device/google/sdv/sdv_core_base/sepolicy/samples/product/private \
+                                 device/google/sdv/sdv_base/sepolicy/samples/product/private
+
 BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/vendor
-BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/vendor/
+
 $(call soong_config_set,sdv_authz,acl_provider_type,sdv_acl_provider)
 endif
 ### SDV END
