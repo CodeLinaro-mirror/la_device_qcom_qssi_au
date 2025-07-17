@@ -49,7 +49,7 @@ BOARD_HAVE_QCOM_FM := false
 
 # Retain the earlier default behavior i.e. ota config (dynamic partition was disabled if not set explicitly), so set
 # SHIPPING_API_LEVEL to 28 if it was not set earlier (this is generally set earlier via build.sh per-target)
-SHIPPING_API_LEVEL := 35
+SHIPPING_API_LEVEL := 36
 
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/cne_url*.mk)
 
@@ -94,10 +94,15 @@ VENDOR_QTI_DEVICE := qssi_au
 TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
-#TODO(amutyala) to revert this once QSSI 15 component created
-ifeq (,$(filter VanillaIceCream V 35, $(PLATFORM_VNDK_VERSION)))
+
 TARGET_USES_GAS := true
+
+ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)
+ifeq ($(TARGET_USES_GAS),true)
+   PRODUCT_SYSTEM_PROPERTIES += ro.android.car.restrictbytos=true
 endif
+endif
+
 ENABLE_AB ?= true
 
 TARGET_DEFINES_DALVIK_HEAP := true
@@ -274,8 +279,7 @@ KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTAL
 
 ifneq ($(strip $(TARGET_BUILD_VARIANT)),user)
 PRODUCT_COPY_FILES += \
-    device/qcom/qssi_au/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_PRODUCT)/etc/init.qcom.testscripts.sh \
-    device/qcom/qssi_au/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_SYSTEM)/etc/init.qcom.testscripts.sh
+    device/qcom/qssi_au/init.qcom.testscripts.sh:$(TARGET_COPY_OUT_PRODUCT)/etc/init.qcom.testscripts.sh
 endif
 
 # copy system_ext specific whitelisted libraries to system_ext/etc
