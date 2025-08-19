@@ -28,7 +28,7 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += device/google/sdv/sdv_base/init_open_dice_service.rc:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/init/init_open_dice_service.rc
 
-PRODUCT_COPY_FILES += device/google/sdv/sdv_cf/vvmtruststore.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/vvmtruststore.rc
+PRODUCT_COPY_FILES += device/google/sdv/sdv_base/vvmtruststore/vvmtruststore.rc:$(TARGET_COPY_OUT_SYSTEM)/etc/init/vvmtruststore.rc
 
 PRODUCT_PACKAGES += \
     android.sdv.hardware.security.keymint-service.nonsecure \
