@@ -394,6 +394,7 @@ PRODUCT_PACKAGES += vendor.qti.qesdsys
 
 PRODUCT_PACKAGES += create_vlan_vm_1.sh \
                     create_vlan_vm_2.sh \
+                    network_ip_cmd.sh \
                     eth_cli.sh \
                     link_monitor.sh \
 
