@@ -149,6 +149,8 @@ TARGET_USES_GAS := true
 endif
 ENABLE_AB ?= true
 
+TARGET_USES_GAS := false
+
 TARGET_DEFINES_DALVIK_HEAP := true
 $(call inherit-product, device/qcom/qssi_au/common64.mk)
 $(call inherit-product, packages/services/Car/car_product/build/car.mk)
