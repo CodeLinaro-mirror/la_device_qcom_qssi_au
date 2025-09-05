@@ -397,6 +397,8 @@ PRODUCT_PACKAGES += create_vlan_vm_1.sh \
                     network_ip_cmd.sh \
                     eth_cli.sh \
                     link_monitor.sh \
+                    create_whitelist_rbvm.sh \
+                    whitelist_rbvm.csv \
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
