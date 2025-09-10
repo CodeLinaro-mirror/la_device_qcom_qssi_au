@@ -31,24 +31,6 @@ BOARD_BOOTCONFIG += \
     androidboot.sdv.max_bundles_management_threads=12
 
 ifeq ($(TARGET_AUTO_RBVM), true)
-# The vvmtruststore partition is owned by the framework i.e. system(_ext).
-SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/system_ext/private \
-                                    device/google/sdv/sdv_base/sepolicy/vvmtruststore/private \
-                                    device/google/sdv/sdv_cf/sepolicy/system_ext/private \
-                                    device/google/sdv/sdv_cf/sepolicy/system_ext/private \
-                                    device/google/sdv/sdv_core_base/sepolicy/system_ext/private
-
-SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/system_ext/public \
-                                   device/google/sdv/sdv_core_base/sepolicy/system_ext/public
-
-PRODUCT_PUBLIC_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/product/public
-
-#DICE EMULATION
-PRODUCT_PRIVATE_SEPOLICY_DIRS += device/google/sdv/sdv_core_base/sepolicy/product/private \
-                                 device/google/sdv/sdv_base/sepolicy/samples/product/private \
-                                 device/google/sdv/sdv_core_base/sepolicy/samples/product/private \
-                                 device/google/sdv/sdv_base/sepolicy/samples/product/private
-
 BOARD_SEPOLICY_DIRS += device/google/sdv/sdv_base/sepolicy/vendor
 
 $(call soong_config_set,sdv_authz,acl_provider_type,sdv_acl_provider)
@@ -210,3 +192,36 @@ BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 -include vendor/qcom/defs/board-defs/system/*.mk
 #################################################################################
 include device/qcom/sepolicy/SEPolicy.mk
+
+ifeq ($(TARGET_AUTO_RBVM), true)
+#####################################################################################################################################
+
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS := device/google/sdv/sdv_base/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_core_base/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_cf/sepolicy/system_ext/private \
+                                    device/google/sdv/sdv_base/sepolicy/vvmtruststore/private \
+                                    device/qcom/sepolicy/generic/private
+
+SYSTEM_EXT_PUBLIC_SEPOLICY_DIRS :=  device/google/sdv/sdv_base/sepolicy/system_ext/public \
+                                    device/google/sdv/sdv_core_base/sepolicy/system_ext/public \
+                                    device/qcom/sepolicy/generic/public
+
+PRODUCT_PRIVATE_SEPOLICY_DIRS :=    device/google/sdv/sdv_base/sepolicy/samples/product/private \
+                                    device/google/sdv/sdv_core_base/sepolicy/product/private \
+                                    device/google/sdv/sdv_base/sepolicy/samples/product/private \
+                                    device/google/sdv/sdv_core_base/sepolicy/samples/product/private \
+                                    packages/services/Car/car_product/sepolicy/private \
+                                    packages/services/Car/cpp/watchdog/sepolicy/private \
+                                    packages/services/Car/cpp/power/sepolicy/private \
+                                    device/qcom/sepolicy/generic/product/private
+
+PRODUCT_PUBLIC_SEPOLICY_DIRS :=     device/google/sdv/sdv_base/sepolicy/product/public \
+                                    packages/services/Car/car_product/sepolicy/public \
+                                    packages/services/Car/cpp/watchdog/sepolicy/public \
+                                    packages/services/Car/cpp/power/sepolicy/public \
+                                    device/qcom/sepolicy/generic/product/public
+                                    
+#####################################################################################################################################
+endif
+
+#####################################################################################################################################
