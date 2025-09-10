@@ -275,6 +275,12 @@ PRODUCT_PACKAGES += candump \
 # HS-I2S test app
 PRODUCT_PACKAGES += hsi2s_test
 
+#Enable cMUMD specific packages
+ENABLE_PASSENGER_SYSTEMUI_RRO := true
+
+#Customer to Implement their own SecondaryLauncher, this is only reference Google test App
+PRODUCT_PACKAGES += MultiDisplayTest
+
 # Kernel modules install path
 KERNEL_MODULES_INSTALL := dlkm
 KERNEL_MODULES_OUT := out/target/product/$(PRODUCT_NAME)/$(KERNEL_MODULES_INSTALL)/lib/modules
