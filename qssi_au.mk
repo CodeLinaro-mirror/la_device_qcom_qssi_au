@@ -342,7 +342,7 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
-PRODUCT_PACKAGES += network_config_default.sh
+#PRODUCT_PACKAGES += network_config_default.sh
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
