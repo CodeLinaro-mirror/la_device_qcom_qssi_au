@@ -340,6 +340,12 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
+#Add soong variable to enable gpp extension!
+$(call add_soong_config_var,video_extensions,enable_gpp_extensions)
+ifeq ($(TARGET_FWK_SUPPORTS_FULL_VALUEADDS),true)
+$(call soong_config_set,video_extensions,enable_gpp_extensions,true)
+endif
+
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 
