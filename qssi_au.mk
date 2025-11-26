@@ -1,6 +1,8 @@
 #For QSSI, we build only the system image. Here we explicitly set the images
 #we build so there is no confusion.
 
+ALLOW_MISSING_DEPENDENCIES := true
+
 TARGET_BOARD_PLATFORM := qssi
 TARGET_BOOTLOADER_BOARD_NAME := qssi_au
 TARGET_BOARD_TYPE := auto
