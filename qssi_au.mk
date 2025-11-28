@@ -1,6 +1,8 @@
 #For QSSI, we build only the system image. Here we explicitly set the images
 #we build so there is no confusion.
 
+ALLOW_MISSING_DEPENDENCIES := true
+
 TARGET_BOARD_PLATFORM := qssi
 TARGET_BOOTLOADER_BOARD_NAME := qssi_au
 TARGET_BOARD_TYPE := auto
@@ -342,7 +344,7 @@ endif
 
 PRODUCT_PACKAGES += vendor.qti.qesdsys
 
-PRODUCT_PACKAGES += network_config_default.sh
+#PRODUCT_PACKAGES += network_config_default.sh
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
