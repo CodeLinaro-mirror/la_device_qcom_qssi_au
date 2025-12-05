@@ -96,10 +96,6 @@ TARGET_USES_QSSI := true
 TARGET_USES_NEW_ION := true
 
 TARGET_USES_GAS := true
-ifeq ($(TARGET_RELEASE_PLATFORM),bp4a)
-  # Disabling GAS for bp4a due to permissioncontroller crash.
-  TARGET_USES_GAS := false
-endif
 
 ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)
 ifeq ($(TARGET_USES_GAS),true)
