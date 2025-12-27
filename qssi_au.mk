@@ -96,10 +96,6 @@ TARGET_USES_QSSI := true
 TARGET_USES_NEW_ION := true
 
 TARGET_USES_GAS := true
-ifeq ($(TARGET_RELEASE_PLATFORM),bp4a)
-  # Disabling GAS for bp4a due to permissioncontroller crash.
-  TARGET_USES_GAS := false
-endif
 
 ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)
 ifeq ($(TARGET_USES_GAS),true)
@@ -356,6 +352,11 @@ endif
 
 # Enable support for APEX updates
 $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
+
+# Enable Car Telemetry
+ENABLE_CARTELEMETRY_SERVICE := true
+PRODUCT_PACKAGES += android.automotive.telemetryd@1.0
+PRODUCT_PACKAGES += ScriptExecutor
 
 ###################################################################################
 # This is the End of target.mk file.
