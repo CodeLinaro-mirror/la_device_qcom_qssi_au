@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+<overlay>
+    <item target="string/config_evsRearviewCameraId" value="@string/config_evsRearviewCameraId" />
+    <item target="string/config_evsCameraActivity" value="@string/config_evsCameraActivity" />
+</overlay>

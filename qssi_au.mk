@@ -353,6 +353,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/updatable_apex.mk)
 # # Some CTS test case failed after enabling feature config_stopSystemPackagesByDefault
 PRODUCT_PACKAGES += initial-package-stopped-states-aosp.xml
 
+# EVS HAL
+# Enable EvsManager, a sample EVS app, and provide custom EVS HAL implementation.
+ENABLE_EVS_SERVICE ?= true
+ENABLE_MOCK_EVSHAL ?= false
+ENABLE_CAREVSSERVICE_SAMPLE ?= true
+ENABLE_SAMPLE_EVS_APP ?= false
+ENABLE_EVS_SAMPLE ?= true
+
+PRODUCT_PACKAGES += Gen3gvmcoqosEvsOverlay
+
 ###################################################################################
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
