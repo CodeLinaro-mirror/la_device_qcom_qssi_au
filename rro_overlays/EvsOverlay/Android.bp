@@ -1,5 +1,4 @@
 package {
-    default_applicable_licenses: ["BSD-3-Clause-Clear"],
 }
 
 runtime_resource_overlay {
