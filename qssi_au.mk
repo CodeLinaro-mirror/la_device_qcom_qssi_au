@@ -222,7 +222,7 @@ PRODUCT_PACKAGES += android.hardware.camera.provider@2.4-service_64
 
 # Ethernet configuration file
 PRODUCT_COPY_FILES += \
-    frameworks/native/data/etc/android.hardware.ethernet.xml:system/etc/permissions/android.hardware.ethernet.xml
+    frameworks/native/data/etc/android.hardware.ethernet.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/android.hardware.ethernet.xml
 
 #To Maintain Vendors which has both 32-bit and 64-bit Enabled
 PRODUCT_COPY_FILES += \
@@ -303,6 +303,8 @@ PRODUCT_COMPATIBLE_PROPERTY_OVERRIDE := true
 ifneq ($(strip $(TARGET_USES_RRO)),true)
 DEVICE_PACKAGE_OVERLAYS += device/qcom/qssi_au/overlay
 endif
+
+PRODUCT_PACKAGES += android.frameworks.automotive.display@1.0-service
 
 #Enable vndk-sp Libraries
 PRODUCT_PACKAGES += vndk_package
