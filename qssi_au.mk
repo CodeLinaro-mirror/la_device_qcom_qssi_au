@@ -91,11 +91,7 @@ TARGET_USES_QSSI := true
 
 TARGET_USES_NEW_ION := true
 
-ifneq (,$(filter cp2a next,$(strip $(TARGET_RELEASE_PLATFORM))))
-    TARGET_USES_GAS := false
-else
-    TARGET_USES_GAS := true
-endif
+TARGET_USES_GAS := true
 
 ifeq ($(strip $(TARGET_BUILD_VARIANT)),user)
 ifeq ($(TARGET_USES_GAS),true)
