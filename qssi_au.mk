@@ -242,6 +242,16 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 PRODUCT_SYSTEM_PROPERTIES += ro.android.car.audio.enableaudiopatch=true
 
+# The property "persist.bluetooth.enablenewavrcp" is introduced in AOSP.
+# In Automotive SP, AVRCP(CT) is enabled in Car UI, so set to false.
+PRODUCT_SYSTEM_PROPERTIES += persist.bluetooth.enablenewavrcp=false
+
+# Disable RTT (Real-Time Text) feature
+PRODUCT_SYSTEM_PROPERTIES += config.disable_rtt=true
+
+# Enable WFD debug property
+PRODUCT_SYSTEM_PROPERTIES += persist.debug.wfd.enable=1
+
 # USB default HAL
 PRODUCT_PACKAGES += \
     android.hardware.usb@1.0-service
