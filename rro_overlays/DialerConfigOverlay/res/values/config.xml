@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+<resources>
+    <!-- Override default dialer to use CarDialerApp (com.android.car.dialer)
+         as the ROLE_DIALER holder for the gen3_gvm_coqos automotive target.
+         Fixes CTS SelfManagedConnectionTest failures caused by empty
+         RoleManager.getRoleHolders(ROLE_DIALER) list when no default dialer
+         is assigned (config_defaultDialer defaults to com.android.dialer which
+         is not installed on this target). -->
+    <string name="config_defaultDialer" translatable="false">com.android.car.dialer</string>
+</resources>

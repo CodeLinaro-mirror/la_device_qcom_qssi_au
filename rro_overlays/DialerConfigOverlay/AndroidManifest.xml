@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+SPDX-License-Identifier: BSD-3-Clause-Clear
+-->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.qti.gen3gvmcoqos.dialer.config.overlay">
+    <application android:hasCode="false" />
+    <overlay android:priority="1"
+             android:targetPackage="android"
+             android:isStatic="true" />
+</manifest>

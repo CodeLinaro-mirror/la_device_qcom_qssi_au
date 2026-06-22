@@ -362,6 +362,7 @@ ENABLE_SAMPLE_EVS_APP ?= false
 ENABLE_EVS_SAMPLE ?= true
 
 PRODUCT_PACKAGES += Gen3gvmcoqosEvsOverlay
+PRODUCT_PACKAGES += Gen3gvmcoqosDialerConfigOverlay
 
 ###################################################################################
 # This is the End of target.mk file.
