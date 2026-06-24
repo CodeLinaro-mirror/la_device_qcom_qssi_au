@@ -1,1 +1,0 @@
-libdiag_system.qti.so
