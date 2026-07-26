@@ -869,7 +869,7 @@ endif
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     ro.oem_unlock_supported=1
 
-TARGET_FS_CONFIG_GEN := device/qcom/qssi_au/config.fs
+TARGET_FS_CONFIG_GEN += device/qcom/qssi_au/config.fs
 
 ifeq ($(TARGET_HAS_LOW_RAM),true)
     PRODUCT_PROPERTY_OVERRIDES += \

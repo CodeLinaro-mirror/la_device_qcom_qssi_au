@@ -138,9 +138,12 @@ BOARD_FRP_PARTITION_NAME := frp
 
 # TODO(b/330696629) remove this once device can drop HIDL.
 # This adds hwservicemanager and the allocator service to the device.
-PRODUCT_PACKAGES += \
-    hwservicemanager \
-    android.hidl.allocator@1.0-service
+
+ifneq ($(TARGET_SDV_ENABLED), true)
+PRODUCT_PACKAGES += hwservicemanager
+endif
+
+PRODUCT_PACKAGES += android.hidl.allocator@1.0-service
 
 #Android EGL implementation
 PRODUCT_PACKAGES += libGLES_android
