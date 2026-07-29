@@ -166,6 +166,8 @@ BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 # This is the End of BoardConfig.mk file.
 # Now, Pickup other split Board.mk files:
 #################################################################################
+ifneq ($(TARGET_SDV_ENABLED), true)
 -include vendor/qcom/defs/board-defs/system/*.mk
+endif
 #################################################################################
 include device/qcom/sepolicy/SEPolicy.mk
