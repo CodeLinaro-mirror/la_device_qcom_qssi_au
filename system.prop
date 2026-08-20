@@ -180,3 +180,6 @@ persist.logd.size=4194304
 
 #Partition source order for Product/Build properties pickup.
 ro.product.property_source_order=odm,vendor,product,system_ext,system
+
+#Enable Support for Configurable Audio Policy Engine to vendor
+persist.vendor.audio.cape.framework.support=true

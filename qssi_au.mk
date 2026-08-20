@@ -239,6 +239,17 @@ PRODUCT_SYSTEM_PROPERTIES += \
 
 PRODUCT_SYSTEM_PROPERTIES += ro.android.car.audio.enableaudiopatch=true
 
+# The volume props are enabled for CAPE Audio on Android 16
+PRODUCT_SYSTEM_PROPERTIES += \
+    ro.config.media_vol_steps=40 \
+    ro.config.vc_call_vol_steps=40 \
+    ro.config.system_vol_steps=40 \
+    ro.config.alarm_vol_steps=40 \
+    ro.config.media_vol_default=36 \
+    ro.config.alarm_vol_default=36 \
+    ro.config.system_vol_default=36 \
+    ro.config.vc_call_vol_default=36
+
 # The property "persist.bluetooth.enablenewavrcp" is introduced in AOSP.
 # In Automotive SP, AVRCP(CT) is enabled in Car UI, so set to false.
 PRODUCT_SYSTEM_PROPERTIES += persist.bluetooth.enablenewavrcp=false
