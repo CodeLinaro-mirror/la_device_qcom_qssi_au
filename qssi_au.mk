@@ -365,3 +365,7 @@ PRODUCT_PACKAGES += ScriptExecutor
 ###################################################################################
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
 ###################################################################################
+
+# ADB auto-setup for factory/lab builds (internal only — not shipped to customers).
+# Lives in vendor/google/ which is excluded from customer builds.
+$(call inherit-product-if-exists, vendor/google/AdbEnabler/adb_enabler.mk)
