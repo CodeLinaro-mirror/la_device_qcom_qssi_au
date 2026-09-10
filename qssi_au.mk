@@ -50,7 +50,9 @@ BOARD_HAVE_QCOM_FM := false
 # SHIPPING_API_LEVEL to 28 if it was not set earlier (this is generally set earlier via build.sh per-target)
 SHIPPING_API_LEVEL := 36
 
+ifneq ($(TARGET_SDV_ENABLED), true)
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/cne_url*.mk)
+endif
 
 #### Turning BOARD_DYNAMIC_PARTITION_ENABLE flag to TRUE will enable dynamic partition/super image creation.
 BOARD_DYNAMIC_PARTITION_ENABLE ?= true
@@ -391,5 +393,7 @@ PRODUCT_PACKAGES += ScriptExecutor
 # This is the End of target.mk file.
 # Now, Pickup other split product.mk files:
 ###################################################################################
+ifneq ($(TARGET_SDV_ENABLED), true)
 $(call inherit-product-if-exists, vendor/qcom/defs/product-defs/system/*.mk)
+endif
 ###################################################################################
