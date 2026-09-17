@@ -162,6 +162,10 @@ BOARD_AVB_SYSTEM_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_SYSTEM_EXT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 BOARD_AVB_PRODUCT_ADD_HASHTREE_FOOTER_ARGS += --hash_algorithm sha256
 
+# Add TARGET_BOARD_AUTO in soong variables
+$(call add_soong_config_namespace,qti)
+$(call soong_config_set,qti,target_board_auto, $(TARGET_BOARD_AUTO))
+
 #################################################################################
 # This is the End of BoardConfig.mk file.
 # Now, Pickup other split Board.mk files:
